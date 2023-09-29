@@ -18,12 +18,10 @@ class _SettingScreenState extends State<SettingScreen> {
     final currentPassword = _currentPasswordController.text;
     final newPassword = _newPasswordController.text;
 
-    // Verifikasi password saat ini
     final isCurrentPasswordCorrect =
         await DatabaseHelper.verifyPassword(currentPassword);
 
     if (isCurrentPasswordCorrect) {
-      // Simpan password baru ke database
       await DatabaseHelper.updatePassword(newPassword);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
